@@ -26,7 +26,7 @@ class DefaultFli implements Fli {
 
 
 	protected function connectRoute(Route $route) {
-		$this->connect($key, uniqid());
+		$this->routeMap->connect(uniqid(), $route);
 	}
 
 	protected function addInjectable(Injectable $injectable) {
