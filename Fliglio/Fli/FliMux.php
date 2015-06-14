@@ -13,7 +13,7 @@ class FliMux {
 		$this->resolvers = new FcChainRegistry();
 	}
 
-	public function addFli(Fli $fli) {
+	public function addApp(ResolverApp $fli) {
 		$this->resolvers->addResolver($fli->createResolver());
 	}
 

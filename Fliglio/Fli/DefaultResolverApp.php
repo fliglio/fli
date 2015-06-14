@@ -15,7 +15,7 @@ use Fliglio\Routing\DefaultInvokerApp;
 use Fliglio\Routing\Type\RouteBuilder;
 use Fliglio\Flfc\Resolvers\DefaultFcChainResolver;
 
-class DefaultFli implements Fli {
+class DefaultResolverApp implements ResolverApp {
 
 	private $routeMap;
 	private $injectables = [];
