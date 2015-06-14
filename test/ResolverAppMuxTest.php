@@ -2,7 +2,7 @@
 namespace Fliglio\Fli;
 
 
-class IntParamTest extends \PHPUnit_Framework_TestCase {
+class ResolverAppMuxTest extends \PHPUnit_Framework_TestCase {
 
 	public function setUp() {
 	}
@@ -10,9 +10,9 @@ class IntParamTest extends \PHPUnit_Framework_TestCase {
 	public function testFliMuxSetup() {
 		$_SERVER = [
 			'REQUEST_URI' => '/foo',
+			'REQUEST_METHOD' => 'GET',
 		];
-		return;
-		$fli = new DefaultFli();
+		$fli = new DefaultResolverApp();
 		$fli->configure(new DefaultConfiguration());
 
 		$mux = new ResolverAppMux();
