@@ -15,7 +15,7 @@ class IntParamTest extends \PHPUnit_Framework_TestCase {
 		$fli = new DefaultFli();
 		$fli->configure(new DefaultConfiguration());
 
-		$mux = new FliMux();
+		$mux = new ResolverAppMux();
 		$mux->addApp($fli);
 
 		$mux->run();

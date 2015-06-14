@@ -5,7 +5,7 @@ namespace Fliglio\Fli;
 use Fliglio\Flfc\FcDispatcherFactory;
 use Fliglio\Flfc\FcChainRegistry;
 
-class FliMux {
+class ResolverAppMux {
 
 	private $resolvers;
 
