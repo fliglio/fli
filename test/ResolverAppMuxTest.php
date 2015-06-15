@@ -5,22 +5,24 @@ namespace Fliglio\Fli;
 class ResolverAppMuxTest extends \PHPUnit_Framework_TestCase {
 
 	public function setUp() {
-	}
-
-	public function testFliMuxSetup() {
 		$_SERVER = [
 			'REQUEST_URI' => '/foo',
 			'REQUEST_METHOD' => 'GET',
 		];
-		$fli = new DefaultResolverApp();
-		$fli->configure(new DefaultConfiguration());
+
+	}
+
+	public function testFliMuxSetup() {
+
+		$app = new StubResolverApp();
+		$app->configure(new DefaultConfiguration());
 
 		$mux = new ResolverAppMux();
-#		$mux->addApp($fli);
+		$mux->addApp($app);
 
-#		$mux->run();
+		$mux->run();
 
-		$this->assertTrue(true);
+		$this->assertEquals($app->chainApp->called, 1);
 	}
 
 }
