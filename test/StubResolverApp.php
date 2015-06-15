@@ -2,6 +2,7 @@
 
 namespace Fliglio\Fli;
 
+use Fliglio\Fli\Configuration\Configuration;
 use Fliglio\Flfc\Resolvers\DefaultFcChainResolver;
 
 class StubResolverApp extends DefaultResolverApp {

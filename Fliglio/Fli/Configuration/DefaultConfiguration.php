@@ -1,8 +1,9 @@
 <?php
 
-namespace Fliglio\Fli;
+namespace Fliglio\Fli\Configuration;
 
 use Fliglio\Routing\DefaultInjectablesFactory;
+
 
 class DefaultConfiguration extends Configuration {
 

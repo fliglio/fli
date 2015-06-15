@@ -1,6 +1,6 @@
 <?php
 
-namespace Fliglio\Fli;
+namespace Fliglio\Fli\Configuration;
 
 class Configuration {
 

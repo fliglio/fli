@@ -1,6 +1,7 @@
 <?php
 namespace Fliglio\Fli;
 
+use Fliglio\Fli\Configuration\DefaultConfiguration;
 
 class ResolverAppMuxTest extends \PHPUnit_Framework_TestCase {
 
