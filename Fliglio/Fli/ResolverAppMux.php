@@ -30,7 +30,7 @@ class ResolverAppMux {
 
 	// Dispatch Request
 	public function run() {
-		$request = $this->getREquest();
+		$request = $this->getRequest();
 		$response = new Response();
 
 		$context = new Context($request, $response);
