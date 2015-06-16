@@ -23,10 +23,14 @@ class ResolverAppMux {
 	protected function getResolvers() {
 		return $this->resolvers;
 	}
+	
+	protected function getRequest() {
+		return $request = (new RequestFactory())->createDefault();
+	}
 
 	// Dispatch Request
 	public function run() {
-		$request = (new RequestFactory())->createDefault();
+		$request = $this->getREquest();
 		$response = new Response();
 
 		$context = new Context($request, $response);
