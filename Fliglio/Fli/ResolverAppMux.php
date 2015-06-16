@@ -2,8 +2,11 @@
 
 namespace Fliglio\Fli;
 
-use Fliglio\Flfc\FcDispatcherFactory;
+use Fliglio\Flfc\FcDispatcher;
 use Fliglio\Flfc\FcChainRegistry;
+use Fliglio\Flfc\RequestFactory;
+use Fliglio\Flfc\Response;
+use Fliglio\Flfc\Context;
 
 class ResolverAppMux {
 
@@ -17,10 +20,23 @@ class ResolverAppMux {
 		$this->resolvers->addResolver($fli->createResolver());
 	}
 
+	protected function getResolvers() {
+		return $this->resolvers;
+	}
+	
+	protected function getRequest() {
+		return $request = (new RequestFactory())->createDefault();
+	}
+
 	// Dispatch Request
 	public function run() {
-		$dispatcherFactory = new FcDispatcherFactory();
-		$dispatcher = $dispatcherFactory->createDefault($this->resolvers);
+		$request = $this->getRequest();
+		$response = new Response();
+
+		$context = new Context($request, $response);
+
+		$dispatcher = new FcDispatcher($this->getResolvers(), $context, '@404', '@error');
+
 		$dispatcher->dispatch();
 	}
 }

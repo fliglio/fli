@@ -33,10 +33,15 @@ class DefaultResolverApp implements ResolverApp {
 			dirname(__DIR__) . "../../../../symfony/validator"
 		);
 	}
-
+	protected function getInjectables() {
+		return $this->injectables;
+	}
+	protected function getRouteMap() {
+		return $this->routeMap;
+	}
 
 	protected function connectRoute(Route $route) {
-		$this->routeMap->connect(uniqid(), $route);
+		$this->routeMap->connectRoute($route);
 	}
 
 	protected function addInjectable(Injectable $injectable) {
@@ -53,7 +58,11 @@ class DefaultResolverApp implements ResolverApp {
 
 	}
 	public function createResolver() {
-		$chain  = new HttpApp(new RestApp(new UrlLintApp(new RoutingApp(new DefaultInvokerApp($this->injectables), $this->routeMap))));
+		$invokerApp = new DefaultInvokerApp($this->getInjectables());
+		$routingApp = new RoutingApp($invokerApp, $this->getRouteMap());
+
+		$chain = new HttpApp(new RestApp(new UrlLintApp($routingApp)));
+
 		return new DefaultFcChainResolver($chain);
 	}
 }
