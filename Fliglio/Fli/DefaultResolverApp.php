@@ -41,7 +41,7 @@ class DefaultResolverApp implements ResolverApp {
 	}
 
 	protected function connectRoute(Route $route) {
-		$this->routeMap->connect(uniqid(), $route);
+		$this->routeMap->connectRoute($route);
 	}
 
 	protected function addInjectable(Injectable $injectable) {
