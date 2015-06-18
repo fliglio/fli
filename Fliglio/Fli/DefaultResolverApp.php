@@ -26,11 +26,11 @@ class DefaultResolverApp implements ResolverApp {
 
 	public function __construct() {
 		$this->routeMap = new RouteMap();
-		
+
 		// configuration annotation reading for api model validation
 		AnnotationRegistry::registerAutoloadNamespace(
 			'Symfony\\Component\\Validator\\Constraints\\',
-			dirname(__DIR__) . "../../../../symfony/validator"
+			dirname(dirname(dirname(dirname(__DIR__)))) . "/symfony/validator"
 		);
 	}
 	protected function getInjectables() {
