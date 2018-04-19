@@ -10,11 +10,9 @@ class ResolverAppMuxTest extends \PHPUnit_Framework_TestCase {
 			'REQUEST_URI' => '/foo',
 			'REQUEST_METHOD' => 'GET',
 		];
-
 	}
 
 	public function testFliMuxSetup() {
-
 		$app = new StubResolverApp();
 		$app->configure(new DefaultConfiguration());
 
