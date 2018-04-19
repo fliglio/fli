@@ -22,6 +22,7 @@ use Fliglio\Flfc\Resolvers\DefaultFcChainResolver;
 class DefaultResolverApp implements ResolverApp {
 
 	private $routeMap;
+	private $appFactories = [];
 	private $injectables = [];
 
 	public function __construct() {
@@ -33,9 +34,11 @@ class DefaultResolverApp implements ResolverApp {
 			dirname(dirname(dirname(dirname(__DIR__)))) . "/symfony/validator"
 		);
 	}
+
 	protected function getInjectables() {
 		return $this->injectables;
 	}
+
 	protected function getRouteMap() {
 		return $this->routeMap;
 	}
@@ -55,13 +58,29 @@ class DefaultResolverApp implements ResolverApp {
 		foreach ($cfg->getInjectables() as $injectable) {
 			$this->addInjectable($injectable);
 		}
-
 	}
-	public function createResolver() {
-		$invokerApp = new DefaultInvokerApp($this->getInjectables());
-		$routingApp = new RoutingApp($invokerApp, $this->getRouteMap());
 
-		$chain = new HttpApp(new RestApp(new UrlLintApp($routingApp)));
+	public function addAppFactory(AppFactory $appFactory) {
+		$this->appFactories[] = $appFactory;
+	}
+
+	public function createResolver() {
+		$app = new DefaultInvokerApp($this->getInjectables());
+
+		foreach ($this->appFactories as $factory) {
+			$app = $factory->create($app);
+		}
+
+		$chain = new HttpApp(
+			new RestApp(
+				new UrlLintApp(
+					new RoutingApp(
+						$app, 
+						$this->getRouteMap()
+					)
+				)
+			)
+		);
 
 		return new DefaultFcChainResolver($chain);
 	}
