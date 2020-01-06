@@ -16,7 +16,6 @@ use Fliglio\Routing\UrlLintApp;
 use Fliglio\Routing\RoutingApp;
 use Fliglio\Routing\DefaultInvokerApp;
 
-use Fliglio\Routing\Type\RouteBuilder;
 use Fliglio\Flfc\Resolvers\DefaultFcChainResolver;
 
 class DefaultResolverApp implements ResolverApp {

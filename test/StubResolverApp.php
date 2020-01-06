@@ -12,9 +12,7 @@ class StubResolverApp extends DefaultResolverApp {
 		$this->chainApp  = new StubChainApp();
 	}
 
-	public function configure(Configuration $cfg) {
-	
-	}
+	public function configure(Configuration $cfg) {}
 
 	public function createResolver() {
 		return new DefaultFcChainResolver($this->chainApp);

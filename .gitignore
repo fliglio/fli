@@ -1,6 +1,2 @@
-error_log
 vendor
-build
 composer.lock
-.phpcomplete_extended
-tags

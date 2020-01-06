@@ -2,12 +2,9 @@
 namespace Fliglio\Fli;
 
 use Fliglio\Flfc\Context;
-use Fliglio\Flfc\Response;
 use Fliglio\Flfc\FcDispatcher;
 use Fliglio\Flfc\FcChainRegistry;
 use Fliglio\Flfc\RequestFactory;
-use Fliglio\Fli\Configuration\DefaultConfiguration;
-use Fliglio\Routing\Type\RouteBuilder;
 
 class DefaultResolverAppTest extends \PHPUnit_Framework_TestCase {
 
