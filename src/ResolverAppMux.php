@@ -25,7 +25,7 @@ class ResolverAppMux {
 	}
 	
 	protected function getRequest() {
-		return $request = (new RequestFactory())->createDefault();
+		return (new RequestFactory())->createDefault();
 	}
 
 	// Dispatch Request

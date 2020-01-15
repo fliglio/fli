@@ -4,8 +4,6 @@ namespace Fliglio\Fli;
 
 use Fliglio\Fli\Configuration\Configuration;
 
-use Doctrine\Common\Annotations\AnnotationRegistry;
-
 use Fliglio\Routing\Type\Route;
 use Fliglio\Routing\RouteMap;
 use Fliglio\Routing\Injectable;
@@ -16,7 +14,6 @@ use Fliglio\Routing\UrlLintApp;
 use Fliglio\Routing\RoutingApp;
 use Fliglio\Routing\DefaultInvokerApp;
 
-use Fliglio\Routing\Type\RouteBuilder;
 use Fliglio\Flfc\Resolvers\DefaultFcChainResolver;
 
 class DefaultResolverApp implements ResolverApp {
@@ -27,12 +24,6 @@ class DefaultResolverApp implements ResolverApp {
 
 	public function __construct() {
 		$this->routeMap = new RouteMap();
-
-		// configuration annotation reading for api model validation
-		AnnotationRegistry::registerAutoloadNamespace(
-			'Symfony\\Component\\Validator\\Constraints\\',
-			dirname(dirname(dirname(dirname(__DIR__)))) . "/symfony/validator"
-		);
 	}
 
 	protected function getInjectables() {
